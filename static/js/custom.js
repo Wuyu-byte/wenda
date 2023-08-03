@@ -37,7 +37,7 @@ $(document).ready(function() {
   
   // 添加请求消息到窗口
   function addRequestMessage(message) {
-    $(".answer .tips").css({"display":"none"});    // 打赏卡隐藏
+    $(".answer .tips").css({"display":"none"});
     chatInput.val('');
     let escapedMessage = escapeHtml(message);  // 对请求message进行转义，防止输入的是html而被浏览器渲染
     let requestMessageElement = $('<div class="message-bubble"><span class="chat-icon request-icon"></span><div class="message-text request"><p>' +  escapedMessage + '</p></div></div>');
@@ -50,6 +50,7 @@ $(document).ready(function() {
 
   // 添加响应消息到窗口,流式响应此方法会执行多次
   function addResponseMessage(message) {
+    message += '请用一句话回答';
     let lastResponseElement = $(".message-bubble .response").last();
     lastResponseElement.empty();
     if ($(".answer .others .center").css("display") === "none") {
@@ -166,7 +167,7 @@ $(document).ready(function() {
         }
       },
       success:function(result){
-        // 判断是否是回复正确信息
+
         if(resFlag){
           result += " 请用一句话回答";
           messages.push({"role": "assistant", "content": result});
