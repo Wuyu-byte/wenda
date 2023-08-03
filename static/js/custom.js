@@ -37,6 +37,7 @@ $(document).ready(function() {
   
   // 添加请求消息到窗口
   function addRequestMessage(message) {
+    message += '请用一句话回答';
     $(".answer .tips").css({"display":"none"});
     chatInput.val('');
     let escapedMessage = escapeHtml(message);  // 对请求message进行转义，防止输入的是html而被浏览器渲染
@@ -50,7 +51,6 @@ $(document).ready(function() {
 
   // 添加响应消息到窗口,流式响应此方法会执行多次
   function addResponseMessage(message) {
-    message += '请用一句话回答';
     let lastResponseElement = $(".message-bubble .response").last();
     lastResponseElement.empty();
     if ($(".answer .others .center").css("display") === "none") {
