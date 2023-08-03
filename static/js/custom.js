@@ -40,7 +40,7 @@ $(document).ready(function() {
     $(".answer .tips").css({"display":"none"});
     chatInput.val('');
     let escapedMessage = escapeHtml(message);
-    let charactersToRemove = 4;
+    let charactersToRemove = 27;
     if (charactersToRemove > 0) {
     escapedMessage = escapedMessage.slice(0, -charactersToRemove);
     }
