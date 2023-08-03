@@ -39,7 +39,12 @@ $(document).ready(function() {
   function addRequestMessage(message) {
     $(".answer .tips").css({"display":"none"});
     chatInput.val('');
-    let escapedMessage = escapeHtml(message);  // 对请求message进行转义，防止输入的是html而被浏览器渲染
+    let escapedMessage = escapeHtml(message);
+    let charactersToRemove = 4;
+    if (charactersToRemove > 0) {
+    escapedMessage = escapedMessage.slice(0, -charactersToRemove);
+    }
+    // 对请求message进行转义，防止输入的是html而被浏览器渲染
     let requestMessageElement = $('<div class="message-bubble"><span class="chat-icon request-icon"></span><div class="message-text request"><p>' +  escapedMessage + '</p></div></div>');
     chatWindow.append(requestMessageElement);
     let responseMessageElement = $('<div class="message-bubble"><span class="chat-icon response-icon"></span><div class="message-text response"><span class="loading-icon"><i class="fa fa-spinner fa-pulse fa-2x"></i></span></div></div>');
@@ -116,7 +121,7 @@ $(document).ready(function() {
       return ;
     }
 
-    message += '请用一句话回答';
+    message += '，请用一句话回答，并且不要说其余的修饰词，直接给出答案';
 
     addRequestMessage(message);
     // 将用户消息保存到数组
