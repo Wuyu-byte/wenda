@@ -37,7 +37,6 @@ $(document).ready(function() {
   
   // 添加请求消息到窗口
   function addRequestMessage(message) {
-    message += '请用一句话回答';
     $(".answer .tips").css({"display":"none"});
     chatInput.val('');
     let escapedMessage = escapeHtml(message);  // 对请求message进行转义，防止输入的是html而被浏览器渲染
@@ -116,6 +115,8 @@ $(document).ready(function() {
       chatInput.on("keydown",handleEnter);
       return ;
     }
+
+    message += '请用一句话回答';
 
     addRequestMessage(message);
     // 将用户消息保存到数组
