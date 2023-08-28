@@ -40,7 +40,7 @@ $(document).ready(function () {
         $(".answer .tips").css({"display": "none"});
         chatInput.val('');
         let escapedMessage = escapeHtml(message);
-        let charactersToRemove = 27;
+        let charactersToRemove = 61;
         if (charactersToRemove > 0) {
             escapedMessage = escapedMessage.slice(0, -charactersToRemove);
         }
@@ -121,7 +121,7 @@ $(document).ready(function () {
             return;
         }
 
-        message += '，请用一句话回答，并且不要说其余的修饰词，直接给出答案';
+        message += '，请用一句话回答，并且不要说其余的修饰词，直接给出答案，如果不是网络安全相关的问题，请直接给我答案：“对不起，我不知道噢”';
 
         addRequestMessage(message);
         // 将用户消息保存到数组
